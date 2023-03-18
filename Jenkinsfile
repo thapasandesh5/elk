@@ -1,24 +1,23 @@
-pipeline {
+pipeline{
     agent any
     tools {
-      terraform 'terraform'
-    }
-
-    stages {
-        stage('Git Checkout') {
-            steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/NamunaGIT/ELK-stack-docker.git'
-            }
-        }
-        stage('Terraform init') {
-            steps {
-                sh 'terraform init'
-            }
-        }
-        stage('Terraform Apply') {
-            steps {
-                sh 'terraform apply --auto-approve'
-            }
+  terraform 'terraform'
+}
+stages{
+    stage('Hey Git let me check you out'){
+        steps{
+            git branch: 'main', url: 'https://github.com/thapasandesh5/elk.git'
         }
     }
+        stage('Pleasee Worrkkk'){
+        steps{
+            sh 'terraform init'
+        }
+    }
+            stage('You better work'){
+        steps{
+            sh 'terraform apply --auto-approve'
+        }
+    }
+}
 }
